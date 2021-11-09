@@ -1,3 +1,4 @@
 [console_scripts]
 files_analyser = files_analyser:hello
+test_script = test_script:how_ru
 
