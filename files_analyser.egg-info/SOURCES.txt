@@ -1,0 +1,9 @@
+README.md
+files_analyser.py
+setup.py
+files_analyser.egg-info/PKG-INFO
+files_analyser.egg-info/SOURCES.txt
+files_analyser.egg-info/dependency_links.txt
+files_analyser.egg-info/entry_points.txt
+files_analyser.egg-info/requires.txt
+files_analyser.egg-info/top_level.txt

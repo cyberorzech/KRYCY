@@ -1,2 +1,60 @@
 2021-11-09 17:45:16.218 | INFO     | __main__:main:7 - Test
 2021-11-09 17:45:22.792 | INFO     | __main__:main:7 - Test
+2021-11-09 18:26:17.732 | ERROR    | __main__:<module>:14 - An error has been caught in function '<module>', process 'MainProcess' (65659), thread 'MainThread' (4630023680):
+Traceback (most recent call last):
+
+> File "/Users/natan/Desktop/KRYCY/lab_repo/KRYCY/run.py", line 14, in <module>
+    main()
+    └ <function main at 0x1081e7e50>
+
+  File "/Users/natan/Desktop/KRYCY/lab_repo/KRYCY/run.py", line 9, in main
+    hello()
+    └ <function command.<locals>.decorator at 0x108387820>
+
+TypeError: decorator() missing 1 required positional argument: 'f'
+2021-11-09 18:36:12.039 | ERROR    | __main__:<module>:15 - An error has been caught in function '<module>', process 'MainProcess' (66723), thread 'MainThread' (4552384000):
+Traceback (most recent call last):
+
+> File "/Users/natan/Desktop/KRYCY/lab_repo/KRYCY/files_analyser.py", line 15, in <module>
+    main()
+    └ <function main at 0x103b5bdc0>
+
+  File "/Users/natan/Desktop/KRYCY/lab_repo/KRYCY/files_analyser.py", line 9, in main
+    greetings(hello)
+    │         └ <Command hello>
+    └ <Group greetings>
+
+  File "/Users/natan/Desktop/KRYCY/lab_repo/KRYCY/venv/lib/python3.9/site-packages/click/core.py", line 1128, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ (<Command hello>,)
+           │    └ <function BaseCommand.main at 0x103d9b4c0>
+           └ <Group greetings>
+  File "/Users/natan/Desktop/KRYCY/lab_repo/KRYCY/venv/lib/python3.9/site-packages/click/core.py", line 1042, in main
+    args = list(args)
+                └ <Command hello>
+
+TypeError: 'Command' object is not iterable
+2021-11-09 18:36:15.999 | ERROR    | __main__:<module>:15 - An error has been caught in function '<module>', process 'MainProcess' (66754), thread 'MainThread' (4582399488):
+Traceback (most recent call last):
+
+> File "/Users/natan/Desktop/KRYCY/lab_repo/KRYCY/files_analyser.py", line 15, in <module>
+    main()
+    └ <function main at 0x105bd8dc0>
+
+  File "/Users/natan/Desktop/KRYCY/lab_repo/KRYCY/files_analyser.py", line 9, in main
+    greetings(hello)
+    │         └ <Command hello>
+    └ <Group greetings>
+
+  File "/Users/natan/Desktop/KRYCY/lab_repo/KRYCY/venv/lib/python3.9/site-packages/click/core.py", line 1128, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ (<Command hello>,)
+           │    └ <function BaseCommand.main at 0x105e184c0>
+           └ <Group greetings>
+  File "/Users/natan/Desktop/KRYCY/lab_repo/KRYCY/venv/lib/python3.9/site-packages/click/core.py", line 1042, in main
+    args = list(args)
+                └ <Command hello>
+
+TypeError: 'Command' object is not iterable
