@@ -12,3 +12,7 @@ jobs:
         with:
           options: "--check --verbose"
           src: "src/"
+      - uses: psf/black@stable
+        with:
+          options: "--check --verbose"
+          src: "tests/"
