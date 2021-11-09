@@ -1,4 +1,11 @@
 {
     "LOG_LEVEL": "INFO",
-    "LOG_DIRECTORY": "logs/"
+    "LOG_DIRECTORY": "logs/",
+    "ALLOWED_INPUT_FILES_EXTENSIONS": [
+        ".txt",
+        ".xml",
+        ".json",
+        ".pcap",
+        ".evtx"
+    ]
 }
