@@ -1,6 +1,6 @@
 import sys
 from loguru import logger
-from datetime import date, datetime
+from datetime import date
 from src.settings_getter import get_settings_in_dict
 
 
@@ -15,8 +15,7 @@ def initialize_logger():
         level=SETTINGS["LOG_LEVEL"],
     )
     day = date.today()
-    now = datetime.now()
-    log_filename = (now.strftime("%H:%M:%S")).replace(":", "") + day.strftime("%b-%d-%Y") + LOG_FILE_EXTENSION
+    log_filename = day.strftime("%b-%d-%Y") + LOG_FILE_EXTENSION
     logger.add(SETTINGS["LOG_DIRECTORY"] + log_filename)
 
 
