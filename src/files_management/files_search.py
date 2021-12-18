@@ -19,7 +19,17 @@ def search_valid_files_recursively(parent_directory):
 
 @logger.catch
 def get_extension(file_path):
-    pass
+    NO_SLASH_FOUND = -1
+    NO_DOT_FOUND = -1
+    if not isinstance(file_path, str):
+        raise TypeError(f"get_extension: string input expected, not {type(file_path)}")
+    last_slash_index = file_path.rfind("/")
+    if last_slash_index != NO_SLASH_FOUND:
+        file_path = file_path[last_slash_index:]
+    dot_index = file_path.rfind(".")
+    if dot_index == NO_DOT_FOUND:
+        return None
+    return file_path[dot_index:]
 
 
 def main():
