@@ -9,7 +9,7 @@ def search_valid_files_recursively(parent_directory):
         if not isinstance(parent_directory, str):
             raise TypeError(f"search_valid_files_recursively path passed as str is expected, not {type(parent_directory)}")
         file_names_list = list()
-        valid_files_extensions = get_settings_in_dict["ALLOWED_INPUT_FILES_EXTENSIONS"]
+        valid_files_extensions = get_settings_in_dict()["ALLOWED_INPUT_FILES_EXTENSIONS"]
         for (dirpath, dirnames, filenames) in walk(parent_directory):
             file_names_list.extend(filenames)
         valid_files_list = [filename for filename in file_names_list if get_extension(filename) in valid_files_extensions]
