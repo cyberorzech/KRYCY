@@ -1,11 +1,11 @@
 import os
-import scapy.all as scp
+import pyshark
 from subprocess import check_output
 from typing import Union
 from re import findall
 
 
-def bpf_filter(pcap_file_path: str, bpf_filter: str) -> scp.PacketList:
+def bpf_filter(pcap_file_path: str, bpf_filter: str):
     """
     Funkcjonalnosc filtrowania bpf.
 
@@ -13,7 +13,7 @@ def bpf_filter(pcap_file_path: str, bpf_filter: str) -> scp.PacketList:
     :param bpf_filter: filtr, ktory ma zostac zastosowany
     :return: lista przefiltrowanych pakietow
     """
-    return scp.sniff(offline=scp.rdpcap(pcap_file_path), filter=bpf_filter)
+    return pyshark.FileCapture(pcap_file_path, display_filter=bpf_filter)
 
 
 def grep_file(file_path: str, grep_expr: str, print_flag: bool = False) -> Union[None, list]:
