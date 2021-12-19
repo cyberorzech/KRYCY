@@ -1,5 +1,5 @@
 {
-    "LOG_LEVEL": "INFO",
+    "LOG_LEVEL": "DEBUG",
     "LOG_DIRECTORY": "logs/",
     "ALLOWED_INPUT_FILES_EXTENSIONS": [
         ".txt",

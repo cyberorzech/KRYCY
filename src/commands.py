@@ -9,7 +9,7 @@ from src.logger import insert_log_to_db
 @click.option(
     "--recursive_search_for_sources",
     default="no",
-    help="Perform recursive searching for files with extensions specified in ALLOWED_INPUT_FILES_EXTENSIONS",
+    help="Perform recursive searching for files with extensions specified in ALLOWED_INPUT_FILES_EXTENSIONS"
 )
 @click.argument("path")
 def recursive_search_for_sources(path, recursive_search_for_sources):
@@ -20,3 +20,16 @@ def recursive_search_for_sources(path, recursive_search_for_sources):
     logger.info(f"{command_usage_message}: {command_result}")
     insert_log_to_db(command_usage_message)
     click.echo(command_result)
+
+# to be implemented with click
+@logger.catch
+def open_pcap_file(path):
+    pass
+
+@logger.catch
+def grep_on_txt_file(path):
+    pass
+
+@logger.catch
+def re_on_text_file(path):
+    pass

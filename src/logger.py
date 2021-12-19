@@ -16,7 +16,7 @@ def initialize_logger():
         colorize=True,
         format="{time} {level} {message}",
         filter="my_module",
-        level=SETTINGS["LOG_LEVEL"],
+        level="INFO",
     )
     day = date.today()
     log_filename = day.strftime("%b-%d-%Y") + LOG_FILE_EXTENSION
@@ -39,21 +39,20 @@ def insert_log_to_db(message):
             host=host, database=database, user=login, password=passwd
         )
         if connection.is_connected():
-            logger.info(f"Connected to {database} in {host}")
+            logger.debug(f"Connected to {database} in {host}")
             db_info = connection.get_server_info()
-            logger.info(f"MySQL server version is: {db_info}")
-            # nie jestem przekonany do ponizszego
+            logger.debug(f"MySQL server version is: {db_info}")
             cursor = connection.cursor()
             cursor.execute("select database();")
             record = cursor.fetchone()
-            logger.info(f"connected to db: {record}")
+            logger.debug(f"connected to db: {record}")
             # insert log
             today = date.today()
             timestamp = f"{today.year}-{today.month}-{today.day} {datetime.now().strftime('%H:%M:%S')}"
             insert_query = f"insert into {table} (timestamp, log) values ('{timestamp}', '{message}');"
             cursor.execute(insert_query)
             connection.commit()
-            logger.info(
+            logger.debug(
                 f"{cursor.rowcount} Record inserted successfully into {table} table"
             )
 
@@ -65,7 +64,7 @@ def insert_log_to_db(message):
         if connection.is_connected():
             cursor.close()
             connection.close()
-            logger.info("MySQL connection is closed")
+            logger.debug("MySQL connection is closed")
 
 
 def main():
