@@ -9,7 +9,6 @@ def main():
     how_ru()
 
 
-
 if __name__ == "__main__":
     initialize_logger()
     main()

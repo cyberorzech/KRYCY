@@ -7,5 +7,12 @@
         ".json",
         ".pcap",
         ".evtx"
-    ]
+    ],
+    "DB_INFO": {
+        "login": "krycy",
+        "passwd": "toor",
+        "database": "mysql",
+        "table": "log",
+        "host": "localhost"
+    }
 }
