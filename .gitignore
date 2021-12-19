@@ -2,3 +2,4 @@ venv/
 .coverage/
 .vscode/
 tests/html_report/*
+smieci

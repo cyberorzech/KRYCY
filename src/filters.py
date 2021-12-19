@@ -16,7 +16,9 @@ def bpf_filter(pcap_file_path: str, bpf_filter: str):
     return pyshark.FileCapture(pcap_file_path, display_filter=bpf_filter)
 
 
-def grep_file(file_path: str, grep_expr: str, print_flag: bool = False) -> Union[None, list]:
+def grep_file(
+    file_path: str, grep_expr: str, print_flag: bool = False
+) -> Union[None, list]:
     """
     Funkcjonalnosc grep.
 
@@ -30,7 +32,7 @@ def grep_file(file_path: str, grep_expr: str, print_flag: bool = False) -> Union
         os.system(f'grep "{grep_expr}" {file_path} --text --color')
     else:
         cmd = check_output(f'grep "{grep_expr}" {file_path} --text', shell=True)
-        return cmd.decode('ISO-8859-1').split('\n')
+        return cmd.decode("ISO-8859-1").split("\n")
 
 
 def re_file(file_path: str, regex: str) -> list:
@@ -41,4 +43,4 @@ def re_file(file_path: str, regex: str) -> list:
     :param regex: wyrazenie regularne
     :return: lista wszystkich pasujacych slow
     """
-    return findall(fr'{regex}', open(file_path).read())
+    return findall(fr"{regex}", open(file_path).read())
