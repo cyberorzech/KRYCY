@@ -3,10 +3,10 @@ from xmltodict import parse
 import xml.etree.ElementTree as ET
 from json import dumps, loads
 from src.files_management.files_search import search_valid_files_recursively
-from src.files_management.files import Files
+from src.files_management.files import File
 
 
-class XML_Files(Files):
+class XML_File(File):
     def __init__(cls, path) -> None:
         super().__init__()
         cls.path = path
