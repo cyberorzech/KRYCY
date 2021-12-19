@@ -82,11 +82,11 @@ def re_file(file_path: str, regex: str) -> list:
     """
     return findall(f"{regex}", open(file_path).read())
 
+
 @logger.catch
 def run_detection_rules(**kwargs):
     # call all detection rules
     action_alert, action_block, description = detect_external_dns_request(**kwargs)
-
 
 
 if __name__ == "__main__":

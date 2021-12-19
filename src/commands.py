@@ -14,6 +14,7 @@ from src.detection_rules import detect_external_dns_request
 from src.files_management.txt_file import TXT_File
 from src.detection_rules import *
 
+
 @logger.catch
 def recursive_search_for_sources(path):
     command_result = search_valid_files_recursively(parent_directory=path)
@@ -21,6 +22,7 @@ def recursive_search_for_sources(path):
     logger.info(f"{command_usage_message}: {command_result}")
     insert_log_to_db(command_usage_message)
     click.echo(command_result)
+
 
 # Files
 @logger.catch
@@ -59,6 +61,7 @@ def open_txt_file(path):
     except Exception as e:
         logger.error(str(e))
 
+
 # Filters
 @logger.catch
 def grep_file(
@@ -74,13 +77,12 @@ def grep_file(
     :return: None, albo lista w zaleznosci od print_flag
     """
     if print_flag:
-        command_result = f'grep "{grep_expr}" {file_path} --text --color'
+        os.system(f'grep "{grep_expr}" {file_path} --text --color')
         command_usage_message = "Performed grep search on file"
 
-        logger.info(f"{command_usage_message}: {command_result}")
+        logger.info(f"{command_usage_message}")
         insert_log_to_db(command_usage_message)
-        click.echo(command_result)
-
+        # click.echo(command_result)
 
     else:
         cmd = check_output(f'grep "{grep_expr}" {file_path} --text', shell=True)
@@ -103,6 +105,7 @@ def re_file(file_path: str, regex: str) -> list:
     insert_log_to_db(command_usage_message)
     click.echo(command_result)
 
+
 @logger.catch
 def bpf_filter(pcap_file_path: str, bpf_filter: str):
     """
@@ -119,12 +122,12 @@ def bpf_filter(pcap_file_path: str, bpf_filter: str):
     insert_log_to_db(command_usage_message)
     click.echo(command_result)
 
+
 # Detection
 @logger.catch
 def run_detection_rules(**kwargs):
     # call all detection rules
     action_alert, action_block, description = detect_external_dns_request(**kwargs)
-
 
 
 if __name__ == "__main__":
