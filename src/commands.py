@@ -1,8 +1,10 @@
 import click
+import inspect
 from loguru import logger
 
 from src.files_management.files_search import search_valid_files_recursively
 from src.logger import insert_log_to_db
+from src.files_management.pcap_file import PCAP_File
 
 
 @click.command()
@@ -21,15 +23,7 @@ def recursive_search_for_sources(path, recursive_search_for_sources):
     insert_log_to_db(command_usage_message)
     click.echo(command_result)
 
-# to be implemented with click
-@logger.catch
-def open_pcap_file(path):
-    pass
 
-@logger.catch
-def grep_on_txt_file(path):
-    pass
 
-@logger.catch
-def re_on_text_file(path):
-    pass
+if __name__ == "__main__":
+    raise NotImplementedError("Use commands")

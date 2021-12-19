@@ -3,7 +3,7 @@ import pyshark
 
 
 from src.files_management.files_search import search_valid_files_recursively
-from src.files_management.files import File
+from src.files_management.file import File
 
 
 class PCAP_File(File):
