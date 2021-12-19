@@ -11,10 +11,17 @@ def search_valid_files_recursively(parent_directory):
             raise TypeError(
                 f"search_valid_files_recursively path passed as str is expected, not {type(parent_directory)}"
             )
-        file_names_list = list()
         valid_files_extensions = get_settings_in_dict()[
             "ALLOWED_INPUT_FILES_EXTENSIONS"
         ]
+
+        if is_file(parent_directory):
+            filename = parent_directory
+            if not get_extension(filename) in valid_files_extensions:
+                return
+            return filename
+
+        file_names_list = list()
         for (dirpath, dirnames, filenames) in walk(parent_directory):
             file_names_list.extend(filenames)
         valid_files_list = [
@@ -26,6 +33,9 @@ def search_valid_files_recursively(parent_directory):
     except Exception as e:
         logger.error(str(e))
 
+@logger.catch
+def is_file(path):
+    pass
 
 @logger.catch
 def get_extension(file_path):
