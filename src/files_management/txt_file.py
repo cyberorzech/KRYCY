@@ -1,7 +1,7 @@
 import inspect
 from loguru import logger
 
-from src.files_management.files import File
+from src.files_management.file import File
 
 
 class TXT_File(File):
