@@ -6,8 +6,6 @@ certifi==2021.10.8
 charset-normalizer==2.0.7
 click==8.0.3
 coverage==6.1.1
-docutils==0.17.1
--e git+https://github.com/TrywialnyOrzech/KRYCY@60af8d459e7b3e944778819f2930d6ed90d3aefd#egg=files_analyser
 idna==3.3
 imagesize==1.2.0
 iniconfig==1.1.1
