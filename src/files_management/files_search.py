@@ -33,9 +33,11 @@ def search_valid_files_recursively(parent_directory):
     except Exception as e:
         logger.error(str(e))
 
+
 @logger.catch
 def is_file(path):
     pass
+
 
 @logger.catch
 def get_extension(file_path):

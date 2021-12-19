@@ -14,12 +14,15 @@ class PCAP_File(File):
     def read(cls) -> list:
         try:
             if cls.check_extension(cls.EXTENSION, cls.path) == False:
-                raise ValueError(f"{inspect.currentframe().f_code.co_name}: invalid file extension. Expects {cls.EXTENSION}, got {cls.path} instead")
+                raise ValueError(
+                    f"{inspect.currentframe().f_code.co_name}: invalid file extension. Expects {cls.EXTENSION}, got {cls.path} instead"
+                )
             pcap = pyshark.FileCapture(cls.path)
             packet_list = [packet for packet in pcap]
             return packet_list
         except Exception as e:
             logger.error(str(e))
+
 
 def main():
     raise NotImplementedError("Use as package")

@@ -5,9 +5,11 @@ from subprocess import check_output
 from typing import Union
 from re import findall
 from loguru import logger
+from src.detection_rules import detect_external_dns_request
 
 from src.files_management.pcap_file import PCAP_File
 from src.files_management.txt_file import TXT_File
+from src.detection_rules import *
 
 # to be implemented with click
 @logger.catch
@@ -23,6 +25,7 @@ def open_pcap_file(path):
     except Exception as e:
         logger.error(str(e))
 
+
 @logger.catch
 def open_txt_file(path):
     try:
@@ -35,6 +38,7 @@ def open_txt_file(path):
     except Exception as e:
         logger.error(str(e))
 
+
 @logger.catch
 def bpf_filter(pcap_file_path: str, bpf_filter: str):
     """
@@ -45,6 +49,7 @@ def bpf_filter(pcap_file_path: str, bpf_filter: str):
     :return: lista przefiltrowanych pakietow
     """
     return pyshark.FileCapture(pcap_file_path, display_filter=bpf_filter)
+
 
 @logger.catch
 def grep_file(
@@ -65,6 +70,7 @@ def grep_file(
         cmd = check_output(f'grep "{grep_expr}" {file_path} --text', shell=True)
         return cmd.decode("ISO-8859-1").split("\n")
 
+
 @logger.catch
 def re_file(file_path: str, regex: str) -> list:
     """
@@ -74,7 +80,13 @@ def re_file(file_path: str, regex: str) -> list:
     :param regex: wyrazenie regularne
     :return: lista wszystkich pasujacych slow
     """
-    return findall(fr"{regex}", open(file_path).read())
+    return findall(f"{regex}", open(file_path).read())
+
+@logger.catch
+def run_detection_rules(**kwargs):
+    # call all detection rules
+    action_alert, action_block, description = detect_external_dns_request(**kwargs)
+
 
 
 if __name__ == "__main__":
