@@ -7,6 +7,7 @@ from re import findall
 from loguru import logger
 
 from src.files_management.pcap_file import PCAP_File
+from src.files_management.txt_file import TXT_File
 
 # to be implemented with click
 @logger.catch
@@ -22,6 +23,17 @@ def open_pcap_file(path):
     except Exception as e:
         logger.error(str(e))
 
+@logger.catch
+def open_txt_file(path):
+    try:
+        if not isinstance(path, str):
+            raise TypeError(
+                f"{inspect.currentframe().f_code.co_name}: input argument expected string, got {type(path)}"
+            )
+        txt_file = TXT_File(path)
+        txt_file.read()
+    except Exception as e:
+        logger.error(str(e))
 
 @logger.catch
 def bpf_filter(pcap_file_path: str, bpf_filter: str):

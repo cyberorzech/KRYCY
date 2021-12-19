@@ -9,10 +9,11 @@ from src.files_management.file import File
 class PCAP_File(File):
     def __init__(cls, path) -> None:
         super().__init__()
-        cls.path = path
+        cls.EXTENSION = ".pcap"
+        cls.__path = path
 
     def read(cls) -> list:
-        pcap = pyshark.FileCapture(cls.path)
+        pcap = pyshark.FileCapture(cls.__path)
         packet_list = [packet for packet in pcap]
         return packet_list
 

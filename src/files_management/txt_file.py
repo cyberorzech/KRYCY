@@ -7,10 +7,11 @@ from src.files_management.files import File
 class TXT_File(File):
     def __init__(cls, path) -> None:
         super().__init__()
-        cls.path = path
+        cls.EXTENSION = ".txt"
+        cls.__path = path
 
     def read(cls) -> list:
-        with open(cls.path) as f:
+        with open(cls.__path) as f:
             txt_line_by_line = f.readlines()
         return txt_line_by_line
 
